@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quezon City Day and Night Activity Map | Yolee Escuadra</title>
-  <meta name="description" content="Explore qualitative day and night activity signals across Quezon City using public geospatial data.">
-  <meta property="og:title" content="How Quezon City Changes from Day to Night">
-  <meta property="og:description" content="An interactive, privacy-safe exploration of qualitative urban activity signals.">
-  <meta property="og:image" content="https://yoleeescuadra.github.io/quezon-city-activity-map/og.png">
+  <title>Quezon City Public-Data Proxy Map | Yolee Escuadra</title>
+  <meta name="description" content="Explore qualitative day-associated and night-associated public-data proxy signals across Quezon City.">
+  <meta property="og:title" content="A Beautiful Map Is Not the Same as an Answer">
+  <meta property="og:description" content="An interactive prototype for testing what public geospatial proxies can and cannot support.">
+  <meta property="og:image" content="https://yoleeescuadra.github.io/quezon-city-activity-map/og-proxy-v2.png">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,29 +17,29 @@
 </head>
 <body>
   <main class="map-page">
-    <div id="map" class="map-canvas" aria-label="Interactive Quezon City day and night activity map"></div>
+    <div id="map" class="map-canvas" aria-label="Interactive Quezon City public-data proxy map"></div>
 
     <header class="map-header">
       <div class="title-block">
         <span class="title-icon" aria-hidden="true">QC</span>
         <div>
-          <h1>How Quezon City Changes from Day to Night</h1>
-          <p>Explore relative activity signals across the city using a privacy-safe qualitative view.</p>
+          <h1>Quezon City Public-Data Proxy Map</h1>
+          <p>Explore what public signals suggest, where they differ, and what still needs validation.</p>
         </div>
       </div>
       <div class="view-switcher" role="group" aria-label="Choose map view">
-        <button class="active" data-mode="orientation" aria-pressed="true">Day vs night</button>
-        <button data-mode="day" aria-pressed="false">Day</button>
-        <button data-mode="night" aria-pressed="false">Night</button>
+        <button class="active" data-mode="orientation" aria-pressed="true">Proxy balance</button>
+        <button data-mode="day" aria-pressed="false">Day-associated</button>
+        <button data-mode="night" aria-pressed="false">Night-associated</button>
       </div>
       <button class="read-button" id="open-panel">How to read</button>
     </header>
 
     <section class="map-legend" aria-label="Map legend">
       <p class="legend-kicker">Current view</p>
-      <h2 id="legend-title">Day vs night orientation</h2>
+      <h2 id="legend-title">Relative proxy orientation</h2>
       <div class="legend-items" id="legend-items"></div>
-      <p class="legend-note">Click a grid cell for its qualitative profile. Exact scores and detailed methodology remain private.</p>
+      <p class="legend-note">Click a grid cell to compare qualitative public-data proxies. These are not observations of people or movement.</p>
     </section>
 
     <button class="stories-button" id="stories-button">Explore reference stories</button>
@@ -50,8 +50,8 @@
       <h2 id="selection-title"></h2>
       <p id="selection-description"></p>
       <div class="signal-pills" id="signal-pills" hidden>
-        <div><span>Day signal</span><strong id="day-signal"></strong></div>
-        <div><span>Night signal</span><strong id="night-signal"></strong></div>
+        <div><span>Day-associated proxy</span><strong id="day-signal"></strong></div>
+        <div><span>Night-associated proxy</span><strong id="night-signal"></strong></div>
       </div>
       <p class="coverage-note" id="coverage-note" hidden></p>
     </aside>
@@ -63,22 +63,22 @@
       </div>
       <div class="plain-language">
         <strong>In simple terms</strong>
-        <p>Red areas lean more toward daytime activity, blue areas lean more toward nighttime activity, and gray areas are closer in relative strength.</p>
+        <p>Red areas have stronger day-associated proxies, blue areas have stronger night-associated proxies, and gray areas have closer relative values. A balanced cell can still have low signals in both views.</p>
       </div>
       <h3>What you can explore</h3>
       <ul>
-        <li>Switch between overall orientation, daytime strength, and nighttime strength.</li>
-        <li>Click a cell to compare qualitative day and night bands.</li>
-        <li>Open the three reference areas to see the plausibility story.</li>
+        <li>Switch between relative orientation and the two proxy-strength views.</li>
+        <li>Click a cell to compare qualitative proxy bands.</li>
+        <li>Open the three reference areas to see basic plausibility checks.</li>
       </ul>
       <h3>Important limits</h3>
-      <p>These are relative signals within Quezon City. They are not population, mobility, customer-volume, or foot-traffic estimates.</p>
+      <p>The map combines public nighttime radiance and mapped urban context. It does not observe people, population movement, working hours, customer volume, or foot traffic.</p>
       <div class="privacy-box"><strong>Privacy-safe view</strong><p>The map excludes source analysis, formulas, weights, thresholds, raw feature counts, exact scores, and cell-level analytical inputs.</p></div>
     </aside>
     <button class="panel-scrim" id="panel-scrim" aria-label="Close information panel" hidden></button>
 
     <div class="map-error" id="map-error" hidden>The map could not load. Check the network connection and refresh.</div>
-    <footer class="map-footer">Independent exploratory study using public data. Not for operational planning.</footer>
+    <footer class="map-footer">Independent proxy prototype using public data. Hypothesis generator only. Not for operational planning.</footer>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>

@@ -1,11 +1,11 @@
-# Quezon City Day and Night Activity Map
+# Quezon City Public-Data Proxy Map
 
-An interactive, qualitative exploration of how public geospatial signals vary between day and night across Quezon City.
+An interactive prototype for exploring how day-associated and night-associated public geospatial proxies vary across Quezon City.
 
 ## What is public
 
-- Qualitative day-versus-night orientation
-- Qualitative daytime and nighttime signal bands
+- Qualitative proxy orientation
+- Qualitative day-associated and night-associated proxy bands
 - Three public reference-area stories
 - High-level limitations and source context
 
@@ -16,7 +16,7 @@ An interactive, qualitative exploration of how public geospatial signals vary be
 - Raw feature counts and processed analytical inputs
 - Credentials, cloud configuration, and nonpublic work information
 
-This is an independent exploratory study built with public data and AI-assisted development. It is intended to demonstrate problem framing, geospatial reasoning, validation, and clear communication. It is not an operational planning tool or a population, mobility, customer-volume, or foot-traffic model.
+This is an independent exploratory prototype built with public data and AI-assisted development. It demonstrates problem framing, geospatial reasoning, assumption testing, and clear communication. It is a hypothesis generator, not an operational planning tool or a population, mobility, customer-volume, or foot-traffic model.
 
 ## Public data context
 

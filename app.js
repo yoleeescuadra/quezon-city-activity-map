@@ -2,17 +2,17 @@ const references = [
   {
     name: "Cubao",
     coordinates: [14.6206, 121.0536],
-    description: "Day-strong while remaining visibly active at night, consistent with a mixed-use commercial and transport center."
+    description: "A plausibility check with very strong day-associated proxies and strong night-associated proxies. This does not measure how many people are present."
   },
   {
     name: "UP Diliman",
     coordinates: [14.6547, 121.0645],
-    description: "A public reference area used to test whether the signal direction is plausible for a large institutional campus."
+    description: "A plausibility check with very strong day-associated proxies and strong night-associated proxies in a large institutional context."
   },
   {
     name: "La Mesa",
     coordinates: [14.7181, 121.0714],
-    description: "A lower-intensity public reference area used to challenge the method against a less urbanized context."
+    description: "A low-intensity plausibility check. Its balanced orientation reflects similarly low proxies, not continuous activity."
   }
 ];
 
@@ -64,22 +64,22 @@ function getStyle(properties, selectedMode) {
 function getLegend() {
   if (mode === "orientation") {
     return [
-      ["#e45745", "More day-oriented", "Day signal is stronger"],
-      ["#3f7fd9", "More night-oriented", "Night signal is stronger"],
-      ["#b9bdc3", "Relatively balanced", "Signals are closer"]
+      ["#e45745", "More day-associated", "Day-associated proxies are stronger"],
+      ["#3f7fd9", "More night-associated", "Night-associated proxies are stronger"],
+      ["#b9bdc3", "Relatively balanced", "Proxy values are closer"]
     ];
   }
   return Object.entries(bandColors).map(([label, color]) => [
     color,
     label,
-    `${mode === "day" ? "Daytime" : "Nighttime"} relative signal`
+    `${mode === "day" ? "Day-associated" : "Night-associated"} qualitative proxy`
   ]);
 }
 
 function renderLegend() {
   legendTitle.textContent = mode === "orientation"
-    ? "Day vs night orientation"
-    : `${mode[0].toUpperCase()}${mode.slice(1)} signal strength`;
+    ? "Relative proxy orientation"
+    : `${mode === "day" ? "Day-associated" : "Night-associated"} proxy strength`;
   legendItems.replaceChildren();
   getLegend().forEach(([color, label, description]) => {
     const item = document.createElement("div");
@@ -154,7 +154,7 @@ document.getElementById("stories-button").addEventListener("click", () => {
   showSelection({
     title: "Reference stories",
     label: "Three public contexts",
-    description: "Click Cubao, UP Diliman, or La Mesa on the map to explore how public reference areas were used as plausibility checks."
+    description: "Click Cubao, UP Diliman, or La Mesa to see basic plausibility checks. Expected patterns are checks, not discoveries or proof of population movement."
   });
 });
 
@@ -185,7 +185,7 @@ fetch("map-data.geojson")
           showSelection({
             title: properties.cell_id,
             label: properties.orientation,
-            description: "A qualitative view of relative activity signals within Quezon City.",
+            description: "A qualitative comparison of public-data proxies. It does not observe people or movement.",
             day: properties.day_signal,
             night: properties.night_signal,
             note: properties.observation_note
